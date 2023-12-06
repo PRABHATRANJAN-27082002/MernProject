@@ -1,0 +1,12 @@
+
+npm install mongoose
+mongo -version
+
+BSON - Binary json - Java Script Object Notation
+
+Collection->Array of Objects
+Document->{}
+Feilds->key,values
+
+npm i mongoose
+mongodb+srv://prabhat:prabhatranjan@cluster0.62t4xlc.mongodb.net/mernstack?retryWrites=true&w=majority
