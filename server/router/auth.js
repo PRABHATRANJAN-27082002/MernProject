@@ -1,7 +1,10 @@
 const express = require("express")
 const router = express.Router()
 const bcrypt = require("bcryptjs")
-const jwt  = require("jsonwebtoken")
+const app = express()
+
+
+// const jwt  = require("jsonwebtoken")
 
 require('../db/conn')
 const User =  require("../model/userSchema")
@@ -9,6 +12,8 @@ const User =  require("../model/userSchema")
 router.get('/',(req,res)=>{
     res.send(`Hello world from the server router js`)
 })
+
+
 //promises
 // router.post('/register',(req,res)=>{
 
@@ -90,6 +95,8 @@ router.post('/register', async (req,res)=>{
 
 router.post('/signin', async (req,res)=>{
 
+    let token
+
     const {email,password} = req.body
 
     if(!password || !email){
@@ -106,13 +113,14 @@ router.post('/signin', async (req,res)=>{
         if(userFind){
             const isMatch = await bcrypt.compare(password,pass)
 
-            let token = await userFind.generateAuthToken()
+            token = await userFind.generateAuthToken()
             console.log(token)
         
-        res.cookie("jwtoken",token,{
-            expires:new Date(Date.now() + 67680000),
-            httpOnly:true
-        })
+            res.cookie("jwtoken",token,{
+                expires:new Date(Date.now() + 67680000),
+                httpOnly:true,
+                secure: false,
+            })
 
             if(isMatch){
                 return res.status(200).json({message:"successfully login"})

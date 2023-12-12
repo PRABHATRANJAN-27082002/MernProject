@@ -24,9 +24,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    tokens:[
+    tokens: [
         {
-            token:{
+            token: {
                 type: String,
                 required: true
             }
@@ -34,23 +34,23 @@ const userSchema = new mongoose.Schema({
     ]
 })
 
-userSchema.pre('save',async function(next){
-    if(this.isModified('password')){
-        this.password = await bcrypt.hash(this.password,12)
-        this.cpassword = await bcrypt.hash(this.cpassword,12)
+userSchema.pre('save', async function (next) {
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 12)
+        this.cpassword = await bcrypt.hash(this.cpassword, 12)
     }
     next()
 })
 
 // we are generating token
-userSchema.methods.generateAuthToken = async function() {
-    try{
-        let token = jwt.sign({_id:this._id},process.env.SECRETKEY)
-        this.tokens = this.tokens.concat({token:token})
+userSchema.methods.generateAuthToken = async function () {
+    try {
+        let token = jwt.sign({ _id: this._id }, process.env.SECRETKEY)
+        this.tokens = this.tokens.concat({ token: token })
         await this.save()
         return token
     }
-    catch(err){
+    catch (err) {
         console.log(err)
     }
 }

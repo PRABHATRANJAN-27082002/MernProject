@@ -1,6 +1,5 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import logo from '../Image/logo.webp'
 import logo6 from '../Image/logo6.png'
 
 import { NavLink } from 'react-router-dom'
