@@ -7,6 +7,12 @@ dotenv.config({ path : './config.env' })
 
 require("./db/conn")
 
+app.use(express.json())
+
+app.use(require("./router/auth"))
+
+// const User = require('./model/userSchema')
+
 // mongod --version
 // mongosh --version
 
@@ -36,25 +42,26 @@ const middleware = (req,res,next) =>{
     next()
 }
 
-app.get('/',(req,res)=>{
-    res.send("Hello World from the server")
-})
+// app.get('/',(req,res)=>{
+//     res.send("Hello World from the server")
+// })
 
-app.get('/about',middleware,(req,res)=>{
-    res.send("I am Prabhat Ranjan")
-})
+// app.get('/about',middleware,(req,res)=>{
+//     console.log("I am about")
+//     res.send("I am Prabhat Ranjan")
+// })
 
-app.get('/contact',(req,res)=>{
-    res.send("Contact Page to contact me on 9958050485")
-})
+// app.get('/contact',(req,res)=>{
+//     res.send("Contact Page to contact me on 9958050485")
+// })
 
-app.get('/login',(req,res)=>{
-    res.send("Login Page")
-})
+// app.get('/login',(req,res)=>{
+//     res.send("Login Page")
+// })
 
-app.get('/registration',(req,res)=>{
-    res.send("Registration Page")
-})
+// app.get('/registration',(req,res)=>{
+//     res.send("Registration Page")
+// })
 
 app.listen(port,()=>{
     console.log(`server is running on ${port}`)

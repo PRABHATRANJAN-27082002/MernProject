@@ -10,3 +10,22 @@ Feilds->key,values
 
 npm i mongoose
 mongodb+srv://prabhat:prabhatranjan@cluster0.62t4xlc.mongodb.net/mernstack?retryWrites=true&w=majority
+
+mongoose.connect(DB,{}
+).then(()=>{}
+).catch((err)=>{})
+
+middleware -> middlework
+
+dotenv
+# dotenv.config({path:"./config.env"})
+
+.gitigrone
+
+userSchema
+
+
+Generate  JWT tokens and store it in database
+how to store the tokens in Cookies
+Get tokens from the cookies snd get verified to the user
+
