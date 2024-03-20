@@ -1,1 +1,1 @@
-Run from this link : https://prabhatranjan-27082002.github.io/MernProject/
+Run from this link : https://prabhatranjan-27082002.github.io
